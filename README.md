@@ -131,8 +131,10 @@ python -m pytest -q tests
 ```text
 eval025/
 ├── astra_eval025/   scorer, scorecard and significance tests, figure inputs, paper-number checks
-├── scripts/         reproduce_paper_025.py, make_scorecard.py, score_forecasts.py, fetch_wb2_results.sh
+├── scripts/         reproduce_paper_025.py, make_scorecard.py, score_forecasts.py, fetch_wb2_results.sh,
+│                    check_scorer_against_wb2.py
 ├── data/            Astra and IFS ENS scores, WeatherBench 2 result files, reference outputs
+├── results/         Astra's 0.25° scores in the WeatherBench 2 result-file layout
 └── tests/
 ```
 
@@ -172,7 +174,8 @@ a minute,
 * `out/scorecard.json`: `cells`, one entry per reference, metric, variable and lead time with both scores and, for CRPS
   and unbiased ensemble-mean RMSE, their ratio, the change in per cent, the 95% bootstrap interval and the verdict; `summary`, the wins, losses and significant wins
   and losses per reference, metric and lead time; `meta`, the settings;
-* `out/astra_vs_era5_1440x721_2020.nc`: the scores in the layout of the WeatherBench 2 result files.
+* `out/astra_vs_era5_1440x721_2020.nc`: the scores in the layout of the WeatherBench 2 result files. For Astra's own
+  scores, this file is in the repository as `eval025/results/astra_vs_era5_1440x721_2020.nc`.
 
 ```python
 import json

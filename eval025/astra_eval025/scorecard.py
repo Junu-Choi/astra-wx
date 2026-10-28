@@ -468,9 +468,11 @@ def write_wb2_nc(D, om, path, *, label=""):
     leads = np.asarray(D["leads_hours"], np.int32)
     lev = np.asarray(WV.LEVELS, np.int32)
     data = {}
-    om = dict(om, unbiased_spread_skill=om["urmse"] / om["spread"])  # the WB2 quantity, 1 / ssr
+    # the WB2 quantities: both ratios divide by the same spread, as in WB2's GenCast and IFS ENS files
+    om = dict(om, unbiased_spread_skill=om["urmse"] / om["spread"], spread_skill=om["mean_rmse"] / om["spread"])
     for metric, key in (("crps", "crps"), ("urmse", "unbiased_mean_rmse"), ("mean_rmse", "mean_rmse"),
-                        ("unbiased_spread_skill", "unbiased_spread_skill"), ("spread", "spread")):
+                        ("spread_skill", "spread_skill"), ("unbiased_spread_skill", "unbiased_spread_skill"),
+                        ("spread", "spread")):
         if metric not in om:
             continue
         for wb2 in dict.fromkeys(v.wb2 for v in rows):
@@ -488,8 +490,9 @@ def write_wb2_nc(D, om, path, *, label=""):
     ds.attrs.update(dict(
         label=label, ensemble_members=int(D["M"]), n_inits=int(len(D["init_times"])),
         definitions="WeatherBench-X: crps fair; unbiased_mean_rmse sqrt(mean(SE_ensmean - var/M)); "
-                    "unbiased_spread_skill unbiased_mean_rmse / spread, sqrt(mean UEMSE / mean var), as in the WB2 "
-                    "files (the spread-skill ratio is its reciprocal); spread sqrt(mean var)",
+                    "unbiased_spread_skill unbiased_mean_rmse / spread, sqrt(mean UEMSE / mean var), and spread_skill "
+                    "mean_rmse / spread, as in the WB2 files (the spread-skill ratio is the reciprocal); "
+                    "spread sqrt(mean var)",
         mean_rmse_note=f"mean_rmse is the RMSE of the {int(D['M'])}-member ensemble mean (depends on M)"))
     ds.to_netcdf(path, engine="scipy")
     return path
