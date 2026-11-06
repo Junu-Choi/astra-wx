@@ -16,7 +16,7 @@
 <p align="center">
   <a href="https://arxiv.org/abs/2610.35545"><img src="https://img.shields.io/badge/arXiv-2610.35545-b31b1b.svg" alt="arXiv"></a>
   <a href="https://arxiv.org/pdf/2610.35545"><img src="https://img.shields.io/badge/paper-PDF-0072B2.svg" alt="PDF"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0-blue.svg" alt="Apache-2.0"></a>
+  <a href="#licence-and-acknowledgements"><img src="https://img.shields.io/badge/license-BSD--3--Clause--Clear%20%7C%20eval025%3A%20Apache--2.0-blue.svg" alt="BSD-3-Clause-Clear; eval025: Apache-2.0"></a>
   <img src="https://img.shields.io/badge/python-3.12-3776AB.svg" alt="Python 3.12">
   <img src="https://img.shields.io/badge/runs%20on-CPU-555555.svg" alt="Runs on CPU">
 </p>
@@ -265,7 +265,8 @@ before square roots and ratios are taken:
 
 ## Licence and acknowledgements
 
-The code is under the Apache License 2.0 ([`LICENSE`](LICENSE)). The figures in `docs/figures/` are from or adapted from the
+The code in `eval025/` is under the Apache License 2.0 ([`eval025/LICENSE`](eval025/LICENSE)); the rest of the repository
+is under the Clear BSD License ([`LICENSE`](LICENSE)). The figures in `docs/figures/` are from or adapted from the
 paper, © 2026 the authors; their Earth imagery is NASA Blue Marble Next Generation.
 
 The evaluation uses WeatherBench 2 (Rasp et al., J. Adv. Model. Earth Syst. 16, e2023MS004019, 2024): its ERA5 store,
