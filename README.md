@@ -47,7 +47,7 @@ a single CPU core.
 
 ## Results
 
-<p align="center"><img src="docs/figures/fig1_efficiency.png" width="100%" alt="Fig. 1: skill relative to IFS ENS against training compute, and inference compute, time and memory per member"></p>
+<p align="center"><img src="docs/figures/fig1_efficiency.png" width="100%" alt="Fig. 1: skill relative to IFS ENS against training compute, training compute of 0.25-degree ensembles, and inference compute, time and memory per member"></p>
 
 <p align="center"><b>Fig. 1 | Astra matches GenCast's skill with 9.8% of its hardware-normalised training compute and
 39 times fewer inference FLOPs per member than its released GPU implementation.</b></p>
@@ -58,8 +58,8 @@ a single CPU core.
 | CRPS skill relative to IFS ENS ¹                      | 7.1%              | 7.1%               |
 | Ensemble-mean RMSE skill relative to IFS ENS ¹        | 6.1%              | 6.1%               |
 | Inference compute per 15-day member                   | 1.9 PFLOP         | 75 PFLOP           |
-| Time per 15-day member                                | 46 s (1 RTX 5090) | ~25 min (1 H100)   |
-| Memory per member                                     | 21 GB             | ~60 GB             |
+| Time per 15-day member                                | 36 s (1 RTX PRO 6000) | ~25 min (1 H100)   |
+| Memory per member                                     | 19.6 GiB          | ~60 GiB            |
 
 ¹ 100 (1 − S / S<sub>IFS ENS</sub>), averaged over daily lead times of 1–10 days and z500, q700, t850, u850 and v850
 (RMSE without q700; unbiased ensemble-mean RMSE). As in the GenCast evaluation, IFS ENS is verified against its own
